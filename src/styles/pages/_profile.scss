@@ -1,0 +1,13 @@
+@import "src/styles/breakpoints";
+.userProfile {
+  display: flex;
+
+  @include breakpoint-down(tablet) {
+    flex-direction: column-reverse;
+    > h2 {
+      text-align: center;
+      margin: 5px 0;
+    }
+  }
+
+}

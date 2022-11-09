@@ -1,0 +1,69 @@
+@import "variables";
+@import "pages/all";
+@import "breakpoints";
+@import "flex";
+
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  //list-style-type: none;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  @include breakpoint-down(tablet) {
+    margin-top: 70px;
+  }
+}
+.active_path {
+  text-decoration: underline!important;
+  color: black!important;
+}
+
+.google_sign_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  height: 40px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  background: #eeeefc;
+  width: 100%;
+  border: 1px solid gray;
+  opacity: .7;
+  &:hover {
+    opacity: 1;
+  }
+
+  > span {
+    font-size: 18px;
+    margin: 0 22px;
+  }
+  svg {
+    font-size: 25px;
+
+  }
+}

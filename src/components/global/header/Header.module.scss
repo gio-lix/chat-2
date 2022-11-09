@@ -1,0 +1,210 @@
+@import "src/styles/index";
+
+.header {
+  display: flex;
+  top: 0;
+  align-items: center;
+  height: 60px;
+  padding: 0 10px;
+  background-color: $bg-gray-200;
+
+  @include breakpoint-down(tablet) {
+    position: fixed;
+    width: 100%;
+  }
+
+  > h3 {
+    margin-right: 30px;
+
+    @include breakpoint-down(tablet) {
+      margin: 0;
+    }
+    a {
+      color: black;
+      text-decoration: inherit;
+    }
+  }
+
+  .burger_menu {
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 30px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: #e5e5e5;
+    }
+
+    @include breakpoint-up(tablet) {
+      display: none;
+    }
+  }
+
+  .link {
+    @include breakpoint-down(tablet) {
+      display: none;
+    }
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: $font-md-16;
+    color: gray;
+    cursor: pointer;
+  }
+
+
+  .nav {
+    @include breakpoint-down(tablet) {
+      display: none;
+    }
+    margin-left: 40px;
+
+    > ul {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      > li {
+        cursor: pointer;
+        position: relative;
+        font-size: $font-md-16;
+        color: gray;
+
+
+        &:not(:first-child) {
+          margin-left: 25px;
+
+          svg {
+            margin-left: 5px;
+            transition: all 150ms ease-in-out;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.rotate {
+  transform: rotate(-90deg);
+}
+
+
+.drop_down {
+  position: absolute;
+  z-index: 2;
+  top: 35px;
+  right: 0;
+  min-width: 130px;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  white-space: nowrap;
+  border: 1px solid #ececec;
+  background-color: white;
+
+  > button {
+    display: block;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 4px;
+    margin: 2px 0;
+    transition: background 100ms ease-in-out;
+    background-color: transparent;
+
+    &:hover {
+      background: #f6f6f6;
+    }
+  }
+}
+
+
+// burger Menu
+.burger_menu_active {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: 30vh;
+  padding-top: 30px;
+  background-color: $bg-gray-200;
+  transition: transform 100ms ease-in-out;
+
+  .link {
+    margin: 0 !important;
+  }
+
+  @include breakpoint-up(tablet) {
+    display: none;
+  }
+}
+
+// search comp
+.search {
+  width: 100%;
+  height: auto;
+
+  @include breakpoint-down(tablet) {
+    margin: 0 10px;
+    .active_border {
+      border: 1.5px solid transparent!important;
+
+    }
+  }
+
+  .active_border {
+    border: 1.5px solid #d2d2ff;
+    &::placeholder {
+      color: #9191c9 !important;
+    }
+  }
+
+  > input {
+    outline: none;
+    width: 100%;
+    padding: 5px 5px;
+    border: 1px solid #e5e5e5;
+  }
+
+}
+
+
+// nav_mob
+.menu_mob {
+  @include breakpoint-down(tablet) {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
+.navigation_mob {
+  @include breakpoint-down(tablet) {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin: 0 !important;
+    padding: 10px;
+
+    .drop_down {
+      position: fixed;
+      top: 207px;
+      width: 100% ;
+
+    }
+
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+

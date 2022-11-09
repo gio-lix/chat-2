@@ -1,0 +1,47 @@
+@import "src/styles/breakpoints";
+
+.root {
+  width: 370px;
+  height: auto;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  border: 1px solid #e8e8e8;
+  box-shadow: 7px 10px 28px 0 rgba(207,207,207,1);
+
+  @include breakpoint-down(tablet) {
+    box-shadow: none;
+    border-radius: initial;
+    width: calc(100% - 8%);
+    margin: 90px auto;
+    border: 1px solid #b4b4b4;
+  }
+
+  > h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  > small {
+    a {
+      color: dodgerblue;
+      opacity: .8;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  > p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+    a {
+      margin-left: 5px;
+      color: dodgerblue;
+      opacity: .8;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
