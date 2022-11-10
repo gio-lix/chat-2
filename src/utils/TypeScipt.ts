@@ -8,7 +8,7 @@ export interface RegisterType extends LoginType {
     cf_password: string
 }
 
-export interface UserState extends LoginType {
+export interface Usertype extends LoginType {
     avatar: string
     createdAt: string
     name: string
@@ -18,12 +18,24 @@ export interface UserState extends LoginType {
     _id: string
 }
 
-export interface AlertState {
+export interface AlertType {
     loading?: boolean
     success?: string | string[]
     errors?: string | string[]
 }
 
-export interface IUserProfileState extends RegisterType {
+export interface UserProfileType extends RegisterType {
     avatar: string | File
+}
+
+export interface CategoryType {
+    _id: string
+    name: string
+    createdAt: string
+    updatedAt: string
+}
+
+export interface AuthType {
+    access_token?: string
+    user?: Usertype
 }

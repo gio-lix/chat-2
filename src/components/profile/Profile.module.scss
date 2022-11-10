@@ -27,7 +27,13 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 14px;
+  }
 
+  .error_info {
+    color: red;
+    > small {
+      text-align: center;
+    }
   }
 
   &_password_box {

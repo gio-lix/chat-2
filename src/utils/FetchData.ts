@@ -25,3 +25,9 @@ export const putApi = async (url: string,post: object, token?: string) => {
     })
     return data
 }
+export const deleteApi = async (url: string, token?: string) => {
+    const {data} = await axios.delete(`/api/${url}`, {
+        headers: {Authorization: token},
+    })
+    return data
+}

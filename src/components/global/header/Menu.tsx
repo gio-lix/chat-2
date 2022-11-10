@@ -1,7 +1,7 @@
 import React, {FC, memo} from 'react';
 import s from "./Header.module.scss";
 import clsx from "clsx";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 
@@ -32,6 +32,7 @@ const Menu:FC<Props> = ({className,onNavigate}) => {
 
     return (
         <>
+
             {!alert.loading && navLink.map(link => (
                 <div
                     onClick={() => onNavigate(link.path)}
@@ -41,6 +42,14 @@ const Menu:FC<Props> = ({className,onNavigate}) => {
                     <p>{link.label}</p>
                 </div>
             ))}
+            {
+                auth.user?.role === "admin" &&
+                <p className={clsx(s.link,isActive("/category"))}>
+                   <Link to="/category">
+                        Category
+                   </Link>
+                </p>
+            }
         </>
     );
 };

@@ -8,8 +8,8 @@ import {RootState} from "../../redux/store";
 import NotFound from "../global/notFound";
 import {HiOutlineEye, HiOutlineEyeOff} from "react-icons/hi";
 import clsx from "clsx";
-import {IUserProfileState} from "../../utils/TypeScipt";
-import {updateUserAction} from "../../redux/actions/profileAction";
+import {resetPasswordAction, updateUserAction} from "../../redux/actions/profileAction";
+import {UserProfileType} from "../../utils/TypeScipt";
 
 
 const initialState = {
@@ -25,18 +25,18 @@ const UserInfo = () => {
     const {auth} = useSelector((state: RootState) => state)
 
 
-    const [user ,setUser] = useState<IUserProfileState>(initialState)
+    const [user, setUser] = useState<UserProfileType>(initialState)
     const [typePress, setTypePress] = useState<boolean>(false)
     const [focus, setFocus] = useState<string>("")
 
 
-    if (!auth.user) return <NotFound />
+    if (!auth.user) return <NotFound/>
 
-    const {name, account, avatar, cf_password, password} = user
+    const {name, avatar, cf_password, password} = user
 
-    const onHandleChangeInput  = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onHandleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target
-            setUser({...user, [name]: value})
+        setUser({...user, [name]: value})
     }
     const onHandleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement
@@ -50,10 +50,10 @@ const UserInfo = () => {
 
     const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (avatar || name) {
+        if (avatar || name)
             dispatch(updateUserAction(avatar as File, name, auth))
-            console.log({avatar, name})
-        }
+        if (password && auth.access_token)
+            dispatch(resetPasswordAction(password, cf_password, auth.access_token))
     }
 
     return (
@@ -62,7 +62,7 @@ const UserInfo = () => {
                 <img src={avatar ? URL.createObjectURL(avatar as File) : auth.user?.avatar} alt="avatar"/>
                 <label htmlFor="file">
                      <span>
-                        <MdMonochromePhotos />
+                        <MdMonochromePhotos/>
                     </span>
                     <input
                         id="file"
@@ -74,7 +74,7 @@ const UserInfo = () => {
                     />
                 </label>
             </div>
-            <div className={clsx( focus === "name" && s.active_border)}>
+            <div className={clsx(focus === "name" && s.active_border)}>
                 <label htmlFor="name">Name</label>
                 <input
                     type="text"
@@ -85,7 +85,7 @@ const UserInfo = () => {
                     disabled={true}
                 />
             </div>
-            <div className={clsx( focus === "account" && s.active_border)}>
+            <div className={clsx(focus === "account" && s.active_border)}>
                 <label htmlFor="account">Account</label>
                 <input
                     type="text"
@@ -96,6 +96,14 @@ const UserInfo = () => {
                     disabled={true}
                 />
             </div>
+            <div className={s.error_info}>
+                {
+                    auth.user.type !== "register" &&
+                    <small>
+                        * Quick login account with {auth.user.type} can't use this function! *
+                    </small>
+                }
+            </div>
             <div className={clsx(s.userInfo_password_box, focus === "password" && s.active_border)}>
                 <label htmlFor="password">Password</label>
                 <input
@@ -104,10 +112,11 @@ const UserInfo = () => {
                     id="password"
                     value={password}
                     onChange={onHandleChangeInput}
+                    disabled={auth.user.type !== "register"}
                     onFocus={() => setFocus("password")}
                 />
                 <small onClick={() => setTypePress(!typePress)}>
-                    {typePress ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+                    {typePress ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
                 </small>
             </div>
             <div className={clsx(s.userInfo_password_box, focus === "cf_password" && s.active_border)}>
@@ -117,13 +126,15 @@ const UserInfo = () => {
                     name="cf_password"
                     id="cf_password"
                     value={cf_password}
+                    disabled={auth.user.type !== "register"}
                     onChange={onHandleChangeInput}
                     onFocus={() => setFocus("cf_password")}
                 />
                 <small onClick={() => setTypePress(!typePress)}>
-                    {typePress ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+                    {typePress ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
                 </small>
             </div>
+
             <button type="submit">update</button>
         </form>
     );

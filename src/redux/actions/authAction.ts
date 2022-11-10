@@ -2,10 +2,9 @@ import {Dispatch} from "react";
 
 import {LoginType, RegisterType} from "../../utils/TypeScipt";
 import {getApi, getRefreshApi, postApi} from "../../utils/FetchData";
-import {AuthAction} from "../types/authType";
-import {AlertAction} from "../reducers/alertReducer";
-import {ALERT, AUTH} from "../types/types";
+import {AUTH, AuthAction} from "../types/authType";
 import {ValidRegister} from "../../utils/valid";
+import {ALERT, AlertAction} from "../types/alertType";
 
 export const loginAction = (payload: LoginType) => async (dispatch: Dispatch<AuthAction | AlertAction>) => {
     try {

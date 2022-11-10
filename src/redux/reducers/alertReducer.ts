@@ -1,14 +1,11 @@
-import {AlertState} from "../../utils/TypeScipt";
-import {ALERT} from "../types/types";
+import * as type from "../types/alertType"
+import {AlertType} from "../../utils/TypeScipt";
 
-export interface AlertAction {
-    type: typeof ALERT,
-    payload: AlertState
-}
 
-const alertReducer = (state: AlertState = {}, action: AlertAction) => {
+
+const alertReducer = (state: AlertType = {}, action: type.AlertAction) => {
     switch (action.type) {
-        case ALERT:
+        case type.ALERT:
             return action.payload
         default:
             return state

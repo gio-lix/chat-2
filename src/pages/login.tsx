@@ -9,15 +9,15 @@ import {gapi} from "gapi-script";
 
 const Login = () => {
 
-    useEffect(() => {
-        function start(){
-            gapi.client.init({
-                clientId: "723807735592-3eq7bokf49l5motot9qcp95gg6mg6jbh.apps.googleusercontent.com",
-                scope: ""
-            })
-        }
-        gapi.load("client:auth2", start)
-    },[])
+    // useEffect(() => {
+    //     function start(){
+    //         gapi.client.init({
+    //             clientId: "723807735592-3eq7bokf49l5motot9qcp95gg6mg6jbh.apps.googleusercontent.com",
+    //             scope: ""
+    //         })
+    //     }
+    //     gapi.load("client:auth2", start)
+    // },[])
     return (
         <>
             <FormContainer>

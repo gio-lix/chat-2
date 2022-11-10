@@ -1,10 +1,10 @@
-import {AuthStateType, AuthAction} from "../types/authType";
-import {AUTH} from "../types/types";
+import * as type from "../types/authType"
+import {AuthType} from "../../utils/TypeScipt";
 
 
-const authReducer = (state: AuthStateType = {}, action: AuthAction) => {
+const authReducer = (state: AuthType = {}, action: type.AuthAction) => {
     switch (action.type) {
-        case AUTH:
+        case type.AUTH:
             return action.payload
         default:
             return state

@@ -3,7 +3,7 @@ import {IoMdClose} from "react-icons/io"
 
 import s from "./Alert.module.scss"
 import {useDispatch} from "react-redux";
-import {ALERT} from "../../redux/types/types";
+import {ALERT} from "../../redux/types/alertType";
 
 
 interface Props {

@@ -42,7 +42,8 @@
     }
   }
 
-  .link {
+  .link, a {
+
     @include breakpoint-down(tablet) {
       display: none;
     }

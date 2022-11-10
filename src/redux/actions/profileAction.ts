@@ -1,11 +1,12 @@
-import {IUserProfileState} from "../../utils/TypeScipt";
-import {AuthStateType} from "../types/authType";
 import {Dispatch} from "react";
-import {ALERT, AUTH} from "../types/types";
 import {checkImage, imageUpload} from "../../utils/ImageUpload";
 import {putApi} from "../../utils/FetchData";
+import {checkPassword} from "../../utils/valid";
+import {ALERT} from "../types/alertType";
+import {AUTH} from "../types/authType";
+import {AuthType} from "../../utils/TypeScipt";
 
-export const updateUserAction = (avatar: File, name: string, auth: AuthStateType) =>
+export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
     async (dispatch: Dispatch<any>) => {
         if (!auth.access_token || !auth.user) return
         let url = " "
@@ -42,4 +43,17 @@ export const updateUserAction = (avatar: File, name: string, auth: AuthStateType
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
         }
 
+    }
+
+export const resetPasswordAction = (password: string, cf_password: string, token: string) =>
+    async (dispatch: Dispatch<any>) => {
+        const msg = checkPassword(password, cf_password)
+        if (msg) return dispatch({type: ALERT, payload: {errors: msg}})
+        try {
+            dispatch({type: ALERT, payload: {loading: true}})
+            await putApi("reset_password", {password}, token)
+            dispatch({type: ALERT, payload: {loading: false}})
+        } catch (err: any) {
+            dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
+        }
     }

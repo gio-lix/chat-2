@@ -10,9 +10,7 @@ const Register = () => {
             <RegisterPass/>
             <p>
                 Already have an account?
-                <Link to='/login'>
-                    Login Now
-                </Link>
+                <Link to='/login'>Login Now</Link>
             </p>
         </FormContainer>
     );
