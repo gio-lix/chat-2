@@ -1,10 +1,46 @@
 import React from 'react';
+import {useSelector} from "react-redux";
+
+import {RootState} from "../redux/store";
+import {Link} from "react-router-dom";
+import CardBlog from "../components/cards/cardBlog";
 
 const Home = () => {
+    const {blogs} = useSelector((state: RootState) => state)
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <section>
+            <div className="home_blog">
+                {blogs.map((mainBlog) => (
+                    <div key={mainBlog._id}>
+                        {mainBlog.count > 0 && (
+                            <>
+                                <h1 className="home_blog_tile">
+                                    <Link to={`/blogs/${(mainBlog.name).toLowerCase()}`}>
+                                        {mainBlog.name}
+                                        <small>
+                                            ({mainBlog.count})
+                                        </small>
+                                    </Link>
+                                </h1>
+                                <div className="home_blog_container">
+                                    {mainBlog.blogs.map((blog) => (
+                                        <CardBlog blog={blog} key={blog._id}/>
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                        <small className="home_blog_more">
+                            {
+                                mainBlog.count > 4 &&
+                                <Link to={`/blogs/${mainBlog.name}`}>
+                                    Read more &gt;&gt;
+                                </Link>
+                            }
+                        </small>
+                    </div>
+                ))}
+            </div>
+        </section>
     );
 };
 

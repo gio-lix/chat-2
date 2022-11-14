@@ -1,30 +1,34 @@
 @import "src/styles/breakpoints";
+@import "src/styles/variables";
 
+.blog {
+  margin:0 calc(100% - 95%);
 
-.create_blog {
-  display: grid;
-  grid-template-columns: 4fr 5fr;
-  grid-gap: 20px;
+  &_create {
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    grid-gap: 20px;
 
-  @include breakpoint-down(tablet) {
-    grid-template-columns: 1fr;
+    @include breakpoint-down(tablet) {
+      grid-template-columns: 1fr;
+    }
   }
-}
+  &_button {
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    opacity: .8;
 
-.create_blog_button {
-  border: none;
-  width: 100px;
-  height: 40px;
-  margin: 10px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: 10px;
-  background-color: #2a2356;
+    border-radius: 10px;
+    background-color: $bg-blue-mix-800;
+    color: $white;
 
-  color: white;
-  opacity: .8;
-  &:hover {
-    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
   }
 }

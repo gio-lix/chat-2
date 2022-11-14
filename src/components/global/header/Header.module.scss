@@ -1,9 +1,10 @@
-@import "src/styles/index";
+@import "src/styles/variables";
+@import "src/styles/breakpoints";
 
 .header {
   display: flex;
-  top: 0;
   align-items: center;
+  top: 0;
   height: 60px;
   padding: 0 10px;
   background-color: $bg-gray-200;
@@ -98,12 +99,12 @@
   z-index: 2;
   top: 35px;
   right: 0;
-  min-width: 130px;
   width: auto;
   height: auto;
   padding: 5px;
+  min-width: 130px;
   white-space: nowrap;
-  border: 1px solid #ececec;
+  border: 1px solid $gray-mix-100;
   background-color: white;
 
   > button {
@@ -111,13 +112,13 @@
     border: none;
     cursor: pointer;
     width: 100%;
-    padding: 4px;
     margin: 2px 0;
+    padding: 4px;
     transition: background 100ms ease-in-out;
-    background-color: transparent;
+    background: transparent;
 
     &:hover {
-      background: #f6f6f6;
+      background-color: $bg-gray-100;
     }
   }
 }
@@ -145,7 +146,6 @@
   }
 }
 
-// search comp
 .search {
   width: 100%;
   height: auto;
@@ -159,9 +159,9 @@
   }
 
   .active_border {
-    border: 1.5px solid #d2d2ff;
+    border: 1.5px solid $gray-mix-100;
     &::placeholder {
-      color: #9191c9 !important;
+      color: $blue-mix-400 !important;
     }
   }
 
@@ -169,7 +169,7 @@
     outline: none;
     width: 100%;
     padding: 5px 5px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid $gray-mix-100;
   }
 
 }
@@ -178,13 +178,13 @@
 // nav_mob
 .menu_mob {
   @include breakpoint-down(tablet) {
-    display: flex !important;
-    justify-content: center;
     width: 100%;
     margin: 0 auto;
     padding: 10px;
+    display: flex !important;
+    justify-content: center;
     &:hover {
-      background-color: white;
+      background-color: $white;
     }
   }
 }
@@ -198,14 +198,14 @@
     padding: 10px;
 
     .drop_down {
+      width: 100%;
       position: fixed;
       top: 207px;
-      width: 100% ;
 
     }
 
     &:hover {
-      background-color: white;
+      background-color: $white;
     }
   }
 }

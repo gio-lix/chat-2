@@ -1,15 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+
+import {BlogType} from "../utils/TypeScipt";
 import {RootState} from "../redux/store";
+import {ALERT} from "../redux/types/alertType";
+
+import {createBlobAction} from "../redux/actions/createBlobAction";
 import NotFound from "../components/global/notFound";
 import CreateForm from "../components/cards/CreateForm";
-import {BlogType} from "../utils/TypeScipt";
 import CartHoriz from "../components/cards/CartHoriz";
 import ReactQuill from "../components/editor/ReactQuill"
 import {validCreateBlog} from "../utils/valid";
-import {ALERT} from "../redux/types/alertType";
-import {imageUpload} from "../utils/ImageUpload";
-import {createBlobAction} from "../redux/actions/createBlobAction";
 
 const initialState = {
     user: "",
@@ -42,7 +43,6 @@ const CreateBlog = () => {
         if (!auth.access_token) return
         const check = validCreateBlog({...blog, content: text})
 
-
         if (check.errLength !== 0) {
             return dispatch({type: ALERT, payload: {errors: check.errMsg}})
         }
@@ -57,8 +57,8 @@ const CreateBlog = () => {
     if (!auth.access_token) return <NotFound/>
 
     return (
-        <section className='m-l-5 m-r-5'>
-            <div className="create_blog">
+        <section className='blog'>
+            <div className="blog_create">
                 <CreateForm
                     blog={blog}
                     setBlog={setBlog}
@@ -71,9 +71,8 @@ const CreateBlog = () => {
                 __html: body
             }} style={{display: "none"}}/>
 
-            <small >{text.length}</small>
-
-            <button onClick={handleSubmit} className="create_blog_button">Create post</button>
+            <div style={{display: "blog"}}>{text.length}</div>
+            <button onClick={handleSubmit} className="blog_button">Create post</button>
         </section>
     );
 };

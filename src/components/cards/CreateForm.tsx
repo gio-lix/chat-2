@@ -3,6 +3,7 @@ import s from "./Cards.module.scss"
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {BlogType, CategoryType, FormSubmitType, InputChangeType} from "../../utils/TypeScipt";
+import clsx from "clsx";
 
 interface Props {
     blog: BlogType
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const CreateForm: FC<Props> = ({setBlog, blog}) => {
-    const {categories} = useSelector((state: RootState) => state)
+    const {categories, alert} = useSelector((state: RootState) => state)
 
     const handleSubmit = (e: FormSubmitType) => {
         e.preventDefault()
@@ -34,6 +35,10 @@ const CreateForm: FC<Props> = ({setBlog, blog}) => {
         setBlog({...blog, [name]: value})
     }
 
+    const checkValidStyle = (length: any) => {
+        console.log('length  - - ' ,length)
+    }
+    console.log("alert.errors - ", alert.errors)
 
     return (
         <div>
@@ -46,18 +51,14 @@ const CreateForm: FC<Props> = ({setBlog, blog}) => {
                         value={blog.title}
                         onChange={handleChangeInput}
                     />
-                    <small>{blog.title.length}/50</small>
+                    <small className={clsx(blog.title.length > 50 && s.checkValid)}>{blog.title.length}/50</small>
                 </div>
                 <div>
-                    {/*<label htmlFor="file">*/}
-                    {/*    file*/}
-                    {/*</label>*/}
                     <input
                         type="file"
                         accept="image/*"
                         id="file"
                         onChange={handleChangeThumbnail}
-                        // hidden
                     />
                 </div>
                 <div>
@@ -65,9 +66,10 @@ const CreateForm: FC<Props> = ({setBlog, blog}) => {
                         name="description"
                         onChange={handleChangeTextarea}
                         value={blog.description}>
-
                     </textarea>
-                    <small>{blog.description.length}/200</small>
+                    <small
+                        className={clsx( blog.description.length > 200 && s.checkValid)}
+                    >{blog.description.length}/200</small>
                 </div>
                 <div>
                     <select

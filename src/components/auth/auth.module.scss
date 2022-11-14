@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .root {
   width: 100%;
   height: auto;
@@ -5,18 +7,15 @@
   div {
     display: flex;
     flex-direction: column;
-
     margin-bottom: 20px;
-
     &:last-child {
       margin-bottom: 30px;
     }
 
     > label {
-      font-size: 14px;
-      color: #545454;
+      font-size: $font-md-14;
+      color: $gray-mix-500;
     }
-
     > input {
       outline: none;
       padding: 5px;
@@ -25,25 +24,24 @@
 
   .password_box {
     position: relative;
-
     > small {
+      cursor: pointer;
       position: absolute;
       right: 10px;
       top: 25%;
-      cursor: pointer;
     }
   }
 
   > button {
     border: none;
+    cursor: pointer;
     width: 70px;
     height: 30px;
     margin-bottom: 10px;
     border-radius: 6px;
-    cursor: pointer;
-    background-color: #afaff1;
-    opacity: .9;
     font-weight: 600;
+    opacity: .9;
+    background-color: $bg-blue-mix-300;
 
     &:hover {
       opacity: 1;
@@ -51,10 +49,10 @@
   }
   .active_color {
     input {
-      border: 1.5px solid #afaff1;
+      border: 1.5px solid $bg-blue-mix-300;
     }
     > label {
-      color: #8080f6;
+      color: $bg-blue-mix-400;
     }
   }
 }

@@ -3,7 +3,6 @@ import ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
 
-import s from "./Edit.module.scss"
 import {checkImage, imageUpload} from "../../utils/ImageUpload";
 import {useDispatch, useSelector} from "react-redux";
 import {ALERT} from "../../redux/types/alertType";
@@ -58,7 +57,7 @@ const Quill: FC<Props> = ({setBody}) => {
 
 
     return (
-        <section className={s.root}>
+        <section>
             <ReactQuill
                 theme="snow"
                 modules={modules}

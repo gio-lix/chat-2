@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
-import s from "./Cards.module.scss"
-import {BlogType} from "../../utils/TypeScipt";
 import {Link} from "react-router-dom";
+import s from "./Cards.module.scss"
+
+import {BlogType} from "../../utils/TypeScipt";
 
 interface Props {
     blog: BlogType

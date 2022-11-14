@@ -25,7 +25,7 @@ const Toast: FC<Props> = ({body, title, bgColor}) => {
         if (toast) {
             const timer = setTimeout(() => {
                 onHandleClose()
-            }, 2500)
+            }, 3000)
             return () => clearTimeout(timer)
         }
     }, [toast])

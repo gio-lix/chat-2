@@ -1,0 +1,37 @@
+@import "src/styles/variables";
+
+
+.home_blog {
+  margin: 0 10px;
+
+  &_more {
+    margin: 10px auto;
+    text-decoration: underline;
+  }
+
+  &_container {
+    width: 100%;
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 20px;
+  }
+
+  &_tile {
+    margin-top: 20px;
+    text-decoration: underline;
+    > a {
+      font-size: $font-xl-30;
+      color: $bg-blue-mix-600;
+
+      &:hover {
+        color: $bg-blue-mix-850;
+      }
+      > small {
+        font-size: $font-md-16;
+        margin-left: 10px;
+      }
+    }
+
+  }
+}
