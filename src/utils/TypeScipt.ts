@@ -1,3 +1,11 @@
+import React from "react";
+
+export type InputChangeType = React.ChangeEvent<HTMLInputElement
+    | HTMLTextAreaElement
+    | HTMLSelectElement>
+
+export type FormSubmitType = React.FormEvent<HTMLFormElement>
+
 export interface LoginType {
     account: string
     password: string
@@ -38,4 +46,15 @@ export interface CategoryType {
 export interface AuthType {
     access_token?: string
     user?: Usertype
+}
+
+export interface BlogType {
+    _id?: string
+    user: string | Usertype,
+    title: string,
+    content: string,
+    description: string,
+    thumbnail: string | File,
+    category: string,
+    createdAt: string
 }

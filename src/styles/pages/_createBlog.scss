@@ -1,0 +1,30 @@
+@import "src/styles/breakpoints";
+
+
+.create_blog {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  grid-gap: 20px;
+
+  @include breakpoint-down(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.create_blog_button {
+  border: none;
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #2a2356;
+
+  color: white;
+  opacity: .8;
+  &:hover {
+    opacity: 1;
+  }
+}
