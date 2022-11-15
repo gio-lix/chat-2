@@ -1,13 +1,18 @@
 @import "src/styles/breakpoints";
 .userProfile {
-  display: flex;
+  min-height: 90vh;
+  //display: flex;
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  grid-gap: 30px;
 
-  @include breakpoint-down(tablet) {
-    flex-direction: column-reverse;
-    > h2 {
-      text-align: center;
-      margin: 5px 0;
-    }
+
+
+  @include breakpoint-down(laptops) {
+    margin: 0 20px;
   }
 
+  @include breakpoint-down(tablet) {
+    grid-template-columns: 1fr!important;
+  }
 }

@@ -12,7 +12,6 @@ interface Props {
 
 const CardBlog:FC<Props> = ({blog}) => {
 
-
     return (
         <article className={s.cardBlog}>
             <figure >
@@ -23,7 +22,10 @@ const CardBlog:FC<Props> = ({blog}) => {
             </figure>
             <div className={s.content_box}>
                 <h3>
-                    <Link to={`/blog/${blog._id}`}>
+                    <Link
+                        to={`/blog/${blog._id}`}
+                        style={{  textTransform: "capitalize"}}
+                    >
                         {blog.title.slice(0, 50) + "..."}
                     </Link>
                 </h3>
@@ -34,7 +36,10 @@ const CardBlog:FC<Props> = ({blog}) => {
                     <small style={{textDecoration: "underline"}}>
                         {
                             typeof(blog.user) !== "string" &&
-                            <Link to={`/profile/${blog.user._id}`}>
+                            <Link
+                                to={`/profile/${blog.user._id}`}
+                                style={{textTransform: "capitalize"}}
+                            >
                                 By: {blog.user.name}
                             </Link>
                         }

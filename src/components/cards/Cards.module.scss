@@ -103,6 +103,14 @@
 
     > h2 {
       margin-bottom: 15px;
+      a {
+        text-transform: capitalize;
+        color: #343464;
+        opacity: .8;
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
 
     > p {

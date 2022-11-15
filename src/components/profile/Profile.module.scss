@@ -1,17 +1,22 @@
 @import "src/styles/variables";
 @import "src/styles/breakpoints";
 
-.root {
 
-}
-
-.userInfo {
-  width: 400px;
-  padding: 5px 15px;
+.user_info {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 460px;
+  padding: 10px 15px;
   border: 1px solid $gray-mix-100;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @include breakpoint-down(tablet) {
     width: 100% !important;
+    position: relative;
   }
 
   input {
@@ -54,6 +59,7 @@
     width: 140px;
     height: 140px;
     border-radius: 50%;
+    background-color: #d9d9e0;
     overflow: hidden;
 
     &:after {
@@ -68,7 +74,6 @@
     }
 
     > img {
-      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -97,6 +102,7 @@
   button {
     border: none;
     cursor: pointer;
+    width: 90px;
     padding: 6px 13px;
     border-radius: 5px;
     font-size: 16px;
@@ -120,3 +126,68 @@
     }
   }
 }
+
+.other_info {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 420px;
+  padding: 20px 0;
+  border: 1px solid $border-light-200;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include breakpoint-down(tablet) {
+    position: relative;
+    width: 100%!important;
+    height: auto;
+    > h4 {
+      font-size: 16px!important;
+    }
+    > figure {
+      width: 140px!important;
+      height: 140px!important;
+    }
+  }
+
+
+  > figure {
+    width: 170px;
+    height: 170px;
+    margin: 10px auto;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  > h4 {
+    text-align: center;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+
+  > p {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  &_date {
+    color: gray;
+  }
+
+  &_name {
+    color: greenyellow;
+  }
+
+  &_email {
+    color: gray;
+  }
+}
+
+

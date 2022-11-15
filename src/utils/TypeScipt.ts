@@ -28,6 +28,7 @@ export interface Usertype extends LoginType {
 
 export interface AlertType {
     loading?: boolean
+    spinner?: boolean
     success?: string | string[]
     errors?: string | string[]
 }

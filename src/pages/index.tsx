@@ -29,6 +29,7 @@ const Home = () => {
                                 </div>
                             </>
                         )}
+                        <hr style={{margin: "5px 0"}}/>
                         <small className="home_blog_more">
                             {
                                 mainBlog.count > 4 &&

@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import UserInfo from "../../components/profile/UserInfo";
 import OtherInfo from "../../components/profile/OtherInfo";
+import UserBlog from "../../components/profile/UserBlog";
 
 const Profile = () => {
     const {slug} = useParams()
@@ -11,9 +12,9 @@ const Profile = () => {
 
 
     return (
-        <section className='userProfile'>
-            {slug === auth.user?._id ? <UserInfo/> : <OtherInfo/>}
-            <h2>Profile</h2>
+        <section className="userProfile" >
+            {slug === auth.user?._id ? <UserInfo/> : <OtherInfo id={slug!}/>}
+            <UserBlog />
         </section>
     );
 };

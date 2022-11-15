@@ -17,7 +17,6 @@ const PageRender = () => {
     const {page, slug} = useParams()
 
     let name = ""
-    console.log("name - ", name)
 
     if (page) {
         name = slug ? `${page}/[slug]` : `${page}`

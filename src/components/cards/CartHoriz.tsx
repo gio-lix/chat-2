@@ -31,7 +31,11 @@ const CartHoriz: FC<Props> = ({blog}) => {
                     )}
                 </div>
                 <div className={s.cartHorizon_contentBox}>
-                    <h2>{blog.title}</h2>
+                    <h2>
+                        <Link to={`/blog/${blog._id}`}>
+                            {blog.title}
+                        </Link>
+                    </h2>
                     <p>{blog.description}</p>
                     <small>{new Date(blog.createdAt).toLocaleString()}</small>
                 </div>

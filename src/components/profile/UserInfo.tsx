@@ -57,8 +57,8 @@ const UserInfo = () => {
     }
 
     return (
-        <form onSubmit={onHandleSubmit} className={s.userInfo}>
-            <div className={s.userInfo_image_box}>
+        <form onSubmit={onHandleSubmit} className={s.user_info} >
+            <div className={s.user_info_image_box}>
                 <img src={avatar ? URL.createObjectURL(avatar as File) : auth.user?.avatar} alt="avatar"/>
                 <label htmlFor="file">
                      <span>
@@ -104,7 +104,7 @@ const UserInfo = () => {
                     </small>
                 }
             </div>
-            <div className={clsx(s.userInfo_password_box, focus === "password" && s.active_border)}>
+            <div className={clsx(s.user_info_password_box, focus === "password" && s.active_border)}>
                 <label htmlFor="password">Password</label>
                 <input
                     type={typePress ? "text" : "password"}
@@ -119,7 +119,7 @@ const UserInfo = () => {
                     {typePress ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
                 </small>
             </div>
-            <div className={clsx(s.userInfo_password_box, focus === "cf_password" && s.active_border)}>
+            <div className={clsx(s.user_info_password_box, focus === "cf_password" && s.active_border)}>
                 <label htmlFor="cf_password">Confirm Password</label>
                 <input
                     type={typePress ? "text" : "password"}

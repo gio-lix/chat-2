@@ -1,10 +1,11 @@
 import {Dispatch} from "react";
 import {checkImage, imageUpload} from "../../utils/ImageUpload";
-import {putApi} from "../../utils/FetchData";
+import {getApi, putApi} from "../../utils/FetchData";
 import {checkPassword} from "../../utils/valid";
-import {ALERT} from "../types/alertType";
+import {ALERT, AlertAction} from "../types/alertType";
 import {AUTH} from "../types/authType";
 import {AuthType} from "../../utils/TypeScipt";
+import {GET_OTHER_INFO, OthersProfileTypeAction} from "../types/profileType";
 
 export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
     async (dispatch: Dispatch<any>) => {
@@ -46,13 +47,30 @@ export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
     }
 
 export const resetPasswordAction = (password: string, cf_password: string, token: string) =>
-    async (dispatch: Dispatch<any>) => {
+    async (dispatch: Dispatch<AlertAction>) => {
         const msg = checkPassword(password, cf_password)
         if (msg) return dispatch({type: ALERT, payload: {errors: msg}})
         try {
             dispatch({type: ALERT, payload: {loading: true}})
             await putApi("reset_password", {password}, token)
             dispatch({type: ALERT, payload: {loading: false}})
+        } catch (err: any) {
+            dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
+        }
+    }
+
+export const getOthersInfoAction = (id: string) =>
+    async (dispatch: Dispatch<AlertAction | OthersProfileTypeAction>) => {
+        try {
+            dispatch({type: ALERT, payload: {loading: true}})
+            const res = await getApi(`user/${id}`)
+
+            dispatch({
+                type: GET_OTHER_INFO,
+                payload: res
+            })
+
+            dispatch({type: ALERT, payload: {loading: true}})
         } catch (err: any) {
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
         }

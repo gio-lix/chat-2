@@ -8,7 +8,7 @@ import Alert from "./components/alert/Alert";
 import {useDispatch} from "react-redux";
 import {RefreshToken} from "./redux/actions/authAction";
 import {getCategoryAction} from "./redux/actions/categoryAction";
-import {getBlogsAction} from "./redux/actions/createBlobAction";
+import {getBlogsAction} from "./redux/actions/blogsAction";
 
 function App() {
     const dispatch = useDispatch<any>()

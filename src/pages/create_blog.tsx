@@ -5,12 +5,13 @@ import {BlogType} from "../utils/TypeScipt";
 import {RootState} from "../redux/store";
 import {ALERT} from "../redux/types/alertType";
 
-import {createBlobAction} from "../redux/actions/createBlobAction";
+
 import NotFound from "../components/global/notFound";
 import CreateForm from "../components/cards/CreateForm";
 import CartHoriz from "../components/cards/CartHoriz";
 import ReactQuill from "../components/editor/ReactQuill"
 import {validCreateBlog} from "../utils/valid";
+import {createBlogAction} from "../redux/actions/blogsAction";
 
 const initialState = {
     user: "",
@@ -50,7 +51,7 @@ const CreateBlog = () => {
 
 
         let newDate = {...blog, content: body}
-        dispatch(createBlobAction(newDate, auth.access_token))
+        dispatch(createBlogAction(newDate, auth.access_token))
 
     }
 
