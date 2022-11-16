@@ -1,0 +1,66 @@
+@import "src/styles/breakpoints";
+
+.blog {
+
+  @include breakpoint-down(laptops) {
+    margin: 0 20px;
+  }
+
+  > hr {
+    color: gray;
+    margin-bottom: 10px;
+  }
+  > h3 {
+      font-size: 26px;
+      color: #5a5ab0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  > h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #3d3d3d;
+    font-size: 30px;
+  }
+
+  &_date {
+
+    text-align: right;
+    margin-bottom: 40px;
+
+    @include breakpoint-down(mobile) {
+      text-align: center!important;
+    }
+
+    small:first-child {
+      font-size: 18px;
+      font-weight: 500;
+      color: #444444;
+    }
+    small:last-child {
+      font-size: 16px;
+      font-weight: 500;
+      color: #6d6dd5;
+    }
+  }
+
+  .login {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #575757;
+
+    > a {
+      color: #3f3fc5;
+      text-decoration: underline;
+    }
+  }
+
+  .spinner {
+    width: 50px!important;
+    margin: 0 auto;
+  }
+}

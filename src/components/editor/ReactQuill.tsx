@@ -4,10 +4,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import {checkImage, imageUpload} from "../../utils/ImageUpload";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {ALERT} from "../../redux/types/alertType";
-import {RootState} from "../../redux/store";
-import {validCreateBlog} from "../../utils/valid";
 
 interface Props {
     setBody: (value: string) => void

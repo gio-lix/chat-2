@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 
 import FormContainer from "../components/auth/formBox";
@@ -8,6 +8,9 @@ import SocialLogin from "../components/auth/SocialLogin";
 import {gapi} from "gapi-script";
 
 const Login = () => {
+    const {search} = useLocation()
+    let url = search ? search : "/"
+
 
     // useEffect(() => {
     //     function start(){
@@ -31,7 +34,7 @@ const Login = () => {
                 </small>
                 <p>
                     You don't have an account?
-                    <Link to='/register'>
+                    <Link to={`/register${url}`}>
                         Register Now
                     </Link>
                 </p>

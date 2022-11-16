@@ -59,3 +59,15 @@ export interface BlogType {
     category: string,
     createdAt: string
 }
+
+export interface CommentType {
+    _id?: string
+    user: Usertype
+    blog_id: string
+    blog_user_id: string
+    content: string
+    replyCM?: CommentType[]
+    reply_user?: Usertype
+    comment_root?: string
+    createdAt: string
+}

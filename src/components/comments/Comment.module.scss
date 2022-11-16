@@ -1,0 +1,166 @@
+@import "src/styles/breakpoints";
+
+.input {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  > button {
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 100px;
+    margin: 10px 0 10px auto;
+    padding: 8px 0;
+    border-radius: 6px;
+    background-color: #3c2c6b;
+    color: white;
+    opacity: .8;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+
+
+.comment {
+  display: flex;
+  margin-bottom: 30px;
+  &_reply {
+    display: flex;
+    @include breakpoint-down(tablet) {
+      flex-direction: column-reverse;
+    }
+  }
+  @include breakpoint-down(tablet) {
+    flex-direction: column;
+  }
+}
+
+.commentList {
+  width: 100%;
+  padding: 5px;
+  margin: 4px 0;
+  border: 1px solid #cecece;
+
+  &_replyBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    > small:last-child {
+      color: #8080f6;
+
+    }
+
+    @include breakpoint-down(mobile) {
+      > small:last-child {
+        font-size: 8px!important;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+
+
+
+.avatarComment {
+  display: flex;
+
+  align-items: flex-start;
+  width: 100px;
+  height: auto;
+
+  @include breakpoint-up(tablet) {
+    flex-direction: column;
+    small {
+      margin-left: 0!important;
+    }
+  }
+
+  @include breakpoint-down(mobile) {
+    width: auto!important;
+    > img {
+      width: 40px!important;
+      height: 40px!important;
+    }
+    > small {
+      font-size: 16px!important;
+    }
+  }
+
+  > img {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+
+  }
+
+  > small {
+    font-size: 22px;
+    margin-left: 10px;
+  }
+}
+
+
+
+
+.avatarReply {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  margin-left: 10px;
+
+
+  &_imageBox {
+    display: flex;
+    > img {
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      @include breakpoint-down(mobile) {
+        height: 33px;
+        width: 33px;
+      }
+    }
+    > div {
+      display: flex;
+      flex-direction: column;
+      margin-right: 10px;
+
+
+      > small:first-child {
+        > a {
+          color: #130101 !important;
+        }
+        font-size: 20px;
+        font-weight: 500;
+      }
+      > small:last-child {
+        color: #6464c5 !important;
+        display: flex;
+        white-space: nowrap;
+        > a {
+          margin-left: 6px;
+          color: #1c8c02;
+        }
+      }
+
+      small {
+        font-size: 18px;
+        text-align: end;
+
+        @include breakpoint-down(mobile) {
+          font-size: 12px!important;
+        }
+      }
+    }
+  }
+
+
+}

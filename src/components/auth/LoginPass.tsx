@@ -7,9 +7,10 @@ import {HiOutlineEye, HiOutlineEyeOff} from "react-icons/hi"
 import s from "./auth.module.scss"
 import { loginAction} from "../../redux/actions/authAction";
 import {RootState} from "../../redux/store";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const LoginPass = () => {
+    const {search} = useLocation()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {auth} = useSelector((state: RootState) => state)
@@ -19,6 +20,9 @@ const LoginPass = () => {
     const [focus, setFocus] = useState("")
 
     const {password,account} = userLogin
+
+    let url = search ? search.replace("?", "/") : "/"
+
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target
@@ -33,7 +37,7 @@ const LoginPass = () => {
 
     useEffect(() => {
         if (auth.access_token) {
-            navigate("/")
+            navigate(url)
         }
     },[auth.access_token])
 

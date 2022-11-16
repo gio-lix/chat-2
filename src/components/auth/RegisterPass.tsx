@@ -4,8 +4,10 @@ import clsx from "clsx";
 import {HiOutlineEye, HiOutlineEyeOff} from "react-icons/hi";
 import {useDispatch} from "react-redux";
 import {registerAction} from "../../redux/actions/authAction";
+import {useLocation} from "react-router-dom";
 
 const RegisterPass = () => {
+
     const dispatch = useDispatch()
     const [userRegister, setUserRegister] = useState({
         name: "",
