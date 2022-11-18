@@ -1,11 +1,17 @@
 import {Dispatch} from "redux"
 import {deleteApi, getApi, postApi, putApi} from "../../utils/FetchData";
 import {ALERT, AlertAction} from "../types/alertType";
-import {CategoryActions, CREATE_CATEGORY, DELETE_CATEGORY, GET_CATEGORY, UPDATE_CATEGORY} from "../types/categoryTypes";
 import {CategoryType} from "../../utils/TypeScipt";
+import {
+    CategoryAction,
+    CREATE_CATEGORY,
+    DELETE_CATEGORY,
+    GET_CATEGORY,
+    UPDATE_CATEGORY
+} from "../types/categoryTypes";
 
 export const createCategoryAction = (name: string, token: string) =>
-    async (dispatch: Dispatch<AlertAction | CategoryActions>) => {
+    async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
         try {
             dispatch({type: ALERT, payload: {loading: true}})
             const {newCategory} = await postApi("category", {name}, token)
@@ -17,7 +23,7 @@ export const createCategoryAction = (name: string, token: string) =>
     }
 
 export const getCategoryAction = () =>
-    async (dispatch: Dispatch<AlertAction | CategoryActions>) => {
+    async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
         try {
             dispatch({type: ALERT, payload: {loading: true}})
             const {category} = await getApi("category")
@@ -29,7 +35,7 @@ export const getCategoryAction = () =>
     }
 
 export const updateCategoryAction = (data: CategoryType, token: string) =>
-    async (dispatch: Dispatch<AlertAction | CategoryActions>) => {
+    async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
         try {
             dispatch({type: UPDATE_CATEGORY, payload: data})
             await putApi(`category/${data._id}`, {name: data.name}, token)
@@ -39,7 +45,7 @@ export const updateCategoryAction = (data: CategoryType, token: string) =>
     }
 
 export const deleteCategoryAction = (id: string, token: string) =>
-    async (dispatch: Dispatch<AlertAction | CategoryActions>) => {
+    async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
         try {
             dispatch({type: DELETE_CATEGORY, payload: id})
             await deleteApi(`category/${id}`, token)

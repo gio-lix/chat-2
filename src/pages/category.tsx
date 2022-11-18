@@ -4,11 +4,15 @@ import {TfiWrite} from "react-icons/tfi"
 import {AiTwotoneDelete} from "react-icons/ai"
 import {GrFormClose} from "react-icons/gr"
 
+import NotFound from "../components/global/notFound";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../redux/store";
-import NotFound from "../components/global/notFound";
-import {createCategoryAction, deleteCategoryAction, updateCategoryAction} from "../redux/actions/categoryAction";
 import {CategoryType} from "../utils/TypeScipt";
+import {
+    createCategoryAction,
+    deleteCategoryAction,
+    updateCategoryAction
+} from "../redux/actions/categoryAction";
 
 const Category = () => {
     const dispatch = useDispatch<any>()

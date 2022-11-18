@@ -1,22 +1,36 @@
-import React, {FC, useRef, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import LiteQuill from "../editor/LiteQuill";
 
 import s from "./Comment.module.scss"
+import {CommentType} from "../../utils/TypeScipt";
 
 
 interface Props {
     callback: (body: string) => void
+    edit?: CommentType
+    setEdit?: (data?: CommentType) => void
 }
 
-const Input:FC<Props> = ({callback}) => {
+const Input:FC<Props> = ({callback, edit, setEdit}) => {
     const useDivRef = useRef<HTMLDivElement>(null)
-    const [body, setBody] = useState("")
+    const [body, setBody] = useState<string>("")
+
+
+
+    useEffect(() => {
+        if (edit) {
+            setBody(edit?.content)
+        }
+    },[edit])
 
 
     const handleSubmit = () => {
         const div = useDivRef.current
         const text = div?.innerText as string
-        if (!text.trim()) return
+        if (!text.trim()) {
+            if (setEdit) return setEdit(undefined)
+            return
+        }
         callback(body)
         setBody("")
     }
@@ -30,7 +44,7 @@ const Input:FC<Props> = ({callback}) => {
                 ref={useDivRef}
             />
             <button onClick={handleSubmit}>
-                send
+                {edit ? "update" : "send"}
             </button>
         </section>
     );

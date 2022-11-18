@@ -78,3 +78,21 @@ export function validateEmail(email: string) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+
+
+export const shallowEqual = (object1: any, object2: any) => {
+    const key1 = Object.keys(object1)
+    const key2 = Object.keys(object2)
+
+    if (key1.length !== key2.length) {
+        return false
+    }
+
+    for (let key of key1) {
+        if (object1[key] !== object2[key]) {
+            return false
+        }
+    }
+    return true
+}

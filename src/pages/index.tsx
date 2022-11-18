@@ -1,8 +1,8 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import {RootState} from "../redux/store";
-import {Link} from "react-router-dom";
 import CardBlog from "../components/cards/cardBlog";
 
 const Home = () => {

@@ -1,9 +1,15 @@
 import React, {FC} from 'react';
+import clsx from "clsx";
 import s from "./Cards.module.scss"
+
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {BlogType, CategoryType, FormSubmitType, InputChangeType} from "../../utils/TypeScipt";
-import clsx from "clsx";
+import {
+    BlogType,
+    CategoryType,
+    FormSubmitType,
+    InputChangeType
+} from "../../utils/TypeScipt";
 
 interface Props {
     blog: BlogType
@@ -11,7 +17,7 @@ interface Props {
 }
 
 const CreateForm: FC<Props> = ({setBlog, blog}) => {
-    const {categories, alert} = useSelector((state: RootState) => state)
+    const {categories} = useSelector((state: RootState) => state)
 
     const handleSubmit = (e: FormSubmitType) => {
         e.preventDefault()
@@ -38,7 +44,6 @@ const CreateForm: FC<Props> = ({setBlog, blog}) => {
     const checkValidStyle = (length: any) => {
         console.log('length  - - ' ,length)
     }
-    console.log("alert.errors - ", alert.errors)
 
     return (
         <div>

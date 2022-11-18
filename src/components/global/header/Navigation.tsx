@@ -1,10 +1,12 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
-import s from "./Header.module.scss";
-import {IoMdArrowDropdown} from "react-icons/io";
 import clsx from "clsx";
+import {IoMdArrowDropdown} from "react-icons/io";
+
+import s from "./Header.module.scss";
+
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../../redux/store";
 import {logoutAction} from "../../../redux/actions/authAction";
+import {RootState} from "../../../redux/store";
 
 
 interface Props {
@@ -16,7 +18,7 @@ const Navigation:FC<Props> = ({className, onNavigate}) => {
     const dispatch = useDispatch<any>()
     const {auth} = useSelector((state: RootState) => state)
 
-    const [drop, setDrop] = useState(false)
+    const [drop, setDrop] = useState<boolean>(false)
     const navRef = useRef<HTMLLIElement>(null)
 
 

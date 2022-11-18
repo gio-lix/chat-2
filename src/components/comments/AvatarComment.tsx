@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
+import {Link} from "react-router-dom";
 
 import s from "./Comment.module.scss"
 
 import {Usertype} from "../../utils/TypeScipt";
-import {Link} from "react-router-dom";
 
 interface Props {
     user: Usertype
@@ -22,4 +22,4 @@ const AvatarComment:FC<Props> = ({user}) => {
     );
 };
 
-export default AvatarComment;
+export default memo(AvatarComment);

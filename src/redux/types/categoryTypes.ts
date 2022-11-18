@@ -6,26 +6,26 @@ export const UPDATE_CATEGORY = "UPDATE_CATEGORY"
 export const DELETE_CATEGORY = "DELETE_CATEGORY"
 
 
-export interface ICRCategoryAction {
+export interface ICategory {
     type: typeof CREATE_CATEGORY,
     payload: CategoryType
 }
-export interface IGETCategoryAction {
+export interface IGETCategory {
     type: typeof GET_CATEGORY,
     payload: CategoryType
 }
-export interface IUPCategoryAction {
+export interface IUPCategory {
     type: typeof UPDATE_CATEGORY,
     payload: CategoryType
 }
-export interface IDELCategoryAction {
+export interface IDELCategory {
     type: typeof DELETE_CATEGORY,
     payload: string
 }
 
-export type CategoryActions =
-    ICRCategoryAction
-    | IGETCategoryAction
-    | IUPCategoryAction
-    | IDELCategoryAction
+export type CategoryAction =
+    | ICategory
+    | IGETCategory
+    | IUPCategory
+    | IDELCategory
 

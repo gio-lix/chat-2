@@ -1,18 +1,18 @@
 @import "src/styles/breakpoints";
+@import "src/styles/variables";
 
 .blog {
-
   @include breakpoint-down(laptops) {
     margin: 0 20px;
   }
 
   > hr {
-    color: gray;
+    color: $gray-400;
     margin-bottom: 10px;
   }
   > h3 {
-      font-size: 26px;
-      color: #5a5ab0;
+      font-size: $font-lg-25;
+      color: $blue-mix-700;
   }
 
   img {
@@ -21,14 +21,13 @@
   }
 
   > h1 {
-    text-align: center;
     margin: 20px 0;
-    color: #3d3d3d;
-    font-size: 30px;
+    text-align: center;
+    font-size: $font-xl-30;
+    color: $gray-mix-500;
   }
 
   &_date {
-
     text-align: right;
     margin-bottom: 40px;
 
@@ -37,7 +36,7 @@
     }
 
     small:first-child {
-      font-size: 18px;
+      font-size: $font-md-18;
       font-weight: 500;
       color: #444444;
     }
@@ -50,11 +49,11 @@
 
   .login {
     margin: 20px 0;
-    font-size: 18px;
-    color: #575757;
+    font-size: $font-md-18;
+    color: $gray-mix-500;
 
     > a {
-      color: #3f3fc5;
+      color: $blue-500;
       text-decoration: underline;
     }
   }

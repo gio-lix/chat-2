@@ -1,7 +1,8 @@
-import React, {FC} from 'react';
-import {Usertype} from "../../utils/TypeScipt";
-import s from "./Comment.module.scss"
+import React, {FC, memo} from 'react';
 import {Link} from "react-router-dom";
+import s from "./Comment.module.scss"
+
+import {Usertype} from "../../utils/TypeScipt";
 
 interface Props {
     user: Usertype
@@ -9,13 +10,14 @@ interface Props {
 }
 
 const AvatarReply:FC<Props> = ({reply_user,user}) => {
+
     return (
         <article className={s.avatarReply} >
             <div className={s.avatarReply_imageBox}>
                 <div>
                     <small>
-                        <Link to={`/profile/${user._id}`}>
-                            {user.name}
+                        <Link to={`/profile/${user?._id}`}>
+                            {user?.name}
                         </Link>
                     </small>
                     <small>
@@ -25,11 +27,11 @@ const AvatarReply:FC<Props> = ({reply_user,user}) => {
                         </Link>
                     </small>
                 </div>
-                <img src={user.avatar} alt="avatar"/>
+                <img src={user?.avatar} alt="avatar"/>
             </div>
         </article>
 
     );
 };
 
-export default AvatarReply;
+export default memo(AvatarReply);

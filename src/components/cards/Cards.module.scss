@@ -91,22 +91,24 @@
       left: 0;
       width: 100%;
       height: 100%;
-
       object-fit: cover;
     }
   }
 
   &_contentBox {
-    height: auto;
     position: relative;
+    height: auto;
+    width: 100%;
     padding: 10px;
 
     > h2 {
       margin-bottom: 15px;
+
       a {
         text-transform: capitalize;
-        color: #343464;
+        color: $blue-mix-800;
         opacity: .8;
+
         &:hover {
           opacity: 1;
         }
@@ -117,14 +119,78 @@
       padding-bottom: 25px;
       text-align: justify;
       word-break: break-all;
+      color: $gray-mix-500;
     }
 
-    > small {
+    > div {
       position: absolute;
-      left: 10px;
-      bottom: 10px;
-      color: $gray-400;
+      bottom: 5px;
+      width: calc(100% - 10px);
+      height: 20px;
+
+      display: flex;
+      justify-content: space-between;
+
+      .blogData {
+        color: $blue-mix-500;
+      }
+
+      .updateBlog {
+        svg {
+          font-size: $font-md-18;
+          color: $blue-mix-750;
+        }
+        > a:first-child {
+          span {
+            position: relative;
+
+            &:hover {
+              &::after {
+                content: "update";
+                position: absolute;
+                z-index: 20;
+                left: 23px;
+                bottom: -23px;
+                width: 60px;
+                height: auto;
+                padding: 2px 0 5px 0;
+                text-align: center;
+                font-weight: 600;
+                color: $gray-mix-700;
+                background-color: $blue-mix-200;
+              }
+            }
+          }
+        }
+
+        >span:last-child {
+          cursor: pointer;
+          position: relative;
+          margin-left: 14px;
+          &:hover {
+            &::after {
+              content: "delete";
+              position: absolute;
+              z-index: 20;
+              left: 23px;
+              bottom: -23px;
+              width: 60px;
+              height: auto;
+              padding: 2px 0 5px 0;
+              text-align: center;
+              font-weight: 600;
+              color: $gray-mix-700;
+              background-color: $blue-mix-200;
+            }
+          }
+          svg {
+            color: $red-mix-200 !important;
+
+          }
+        }
+      }
     }
+
   }
 }
 

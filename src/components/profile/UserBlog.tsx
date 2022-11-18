@@ -35,7 +35,7 @@ const UserBlog = () => {
         dispatch(getBlogsByUserId(user_id!, search))
     }
 
-    if (blogs?.length === 0) return (
+    if (blogs?.length === 0 && total < 1 ) return (
         <div className="d-flex j-c-center a-i-center">
             <h2 style={{color: "#B4B4B4FF"}}>No Blogs</h2>
         </div>

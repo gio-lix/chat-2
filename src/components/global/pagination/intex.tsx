@@ -1,7 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
-import s from "./Pagination.module.scss"
-import {useSearchParams} from "react-router-dom";
 import clsx from "clsx";
+import s from "./Pagination.module.scss"
+
+import {useSearchParams} from "react-router-dom";
 
 interface Props {
     total: number

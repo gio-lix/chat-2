@@ -1,14 +1,15 @@
-import {Dispatch} from "react";
+import {Dispatch} from "redux";
+
 import {checkImage, imageUpload} from "../../utils/ImageUpload";
 import {getApi, putApi} from "../../utils/FetchData";
 import {checkPassword} from "../../utils/valid";
-import {ALERT, AlertAction} from "../types/alertType";
-import {AUTH} from "../types/authType";
 import {AuthType} from "../../utils/TypeScipt";
+import {ALERT, AlertAction} from "../types/alertType";
+import {AUTH, AuthAction} from "../types/authType";
 import {GET_OTHER_INFO, OthersProfileTypeAction} from "../types/profileType";
 
 export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
-    async (dispatch: Dispatch<any>) => {
+    async (dispatch: Dispatch<AlertAction | AuthAction>) => {
         if (!auth.access_token || !auth.user) return
         let url = " "
 
@@ -69,7 +70,6 @@ export const getOthersInfoAction = (id: string) =>
                 type: GET_OTHER_INFO,
                 payload: res
             })
-
             dispatch({type: ALERT, payload: {loading: true}})
         } catch (err: any) {
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})

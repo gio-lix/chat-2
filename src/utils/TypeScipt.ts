@@ -1,6 +1,7 @@
 import React from "react";
 
-export type InputChangeType = React.ChangeEvent<HTMLInputElement
+export type InputChangeType = React.ChangeEvent<
+    | HTMLInputElement
     | HTMLTextAreaElement
     | HTMLSelectElement>
 
@@ -66,7 +67,7 @@ export interface CommentType {
     blog_id: string
     blog_user_id: string
     content: string
-    replyCM?: CommentType[]
+    replyCM: CommentType[]
     reply_user?: Usertype
     comment_root?: string
     createdAt: string

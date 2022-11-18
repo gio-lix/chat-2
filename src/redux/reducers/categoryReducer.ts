@@ -1,7 +1,7 @@
 import * as type from "../types/categoryTypes"
 import {CategoryType} from "../../utils/TypeScipt";
 
-const categoryReducer = (state: CategoryType[] = [], action: type.CategoryActions) => {
+const categoryReducer = (state: CategoryType[] = [], action: type.CategoryAction) => {
     switch (action.type) {
         case type.CREATE_CATEGORY:
             return [action.payload, ...state]

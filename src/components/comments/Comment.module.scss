@@ -1,3 +1,4 @@
+@import "src/styles/variables";
 @import "src/styles/breakpoints";
 
 .input {
@@ -12,7 +13,7 @@
     margin: 10px 0 10px auto;
     padding: 8px 0;
     border-radius: 6px;
-    background-color: #3c2c6b;
+    background-color: $blue-mix-850;
     color: white;
     opacity: .8;
     &:hover {
@@ -26,12 +27,6 @@
 .comment {
   display: flex;
   margin-bottom: 30px;
-  &_reply {
-    display: flex;
-    @include breakpoint-down(tablet) {
-      flex-direction: column-reverse;
-    }
-  }
   @include breakpoint-down(tablet) {
     flex-direction: column;
   }
@@ -46,10 +41,20 @@
   &_replyBox {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     margin-top: 10px;
 
+    > small:first-child {
+      color: $blue-mix-850;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
     > small:last-child {
-      color: #8080f6;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      color: $blue-mix-500;
 
     }
 
@@ -67,7 +72,6 @@
 
 .avatarComment {
   display: flex;
-
   align-items: flex-start;
   width: 100px;
   height: auto;
@@ -86,7 +90,7 @@
       height: 40px!important;
     }
     > small {
-      font-size: 16px!important;
+      font-size: $font-md-16!important;
     }
   }
 
@@ -99,7 +103,7 @@
   }
 
   > small {
-    font-size: 22px;
+    font-size: $font-lg-22;
     margin-left: 10px;
   }
 }
@@ -120,8 +124,8 @@
     display: flex;
     > img {
       border-radius: 50%;
-      height: 50px;
-      width: 50px;
+      height: 45px;
+      width: 45px;
       object-fit: cover;
       @include breakpoint-down(mobile) {
         height: 33px;
@@ -136,15 +140,16 @@
 
       > small:first-child {
         > a {
-          color: #130101 !important;
+          color: $gray-400!important;
         }
-        font-size: 20px;
+        font-size: $font-md-18;
         font-weight: 500;
       }
       > small:last-child {
-        color: #6464c5 !important;
         display: flex;
+        font-size: $font-md-16;
         white-space: nowrap;
+        color: $blue-mix-500 !important;
         > a {
           margin-left: 6px;
           color: #1c8c02;
@@ -152,15 +157,28 @@
       }
 
       small {
-        font-size: 18px;
+        font-size: $font-md-18;
         text-align: end;
 
         @include breakpoint-down(mobile) {
-          font-size: 12px!important;
+          font-size: $font-md-12!important;
         }
       }
     }
   }
-
-
 }
+
+
+.delIcon {
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: $font-lg-20;
+  color: $red-mix-200;
+}
+
+.editIcon {
+  font-size: $font-lg-20;
+  cursor: pointer;
+  color: #6c6c79 !important;
+}
+

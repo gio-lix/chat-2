@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
-import {GiHamburgerMenu} from "react-icons/gi"
 import {Link, useNavigate} from "react-router-dom";
+import {GiHamburgerMenu} from "react-icons/gi"
 
 import clsx from "clsx"
 import s from "./Header.module.scss"
@@ -12,9 +12,7 @@ import Menu from "./Menu";
 
 const Header = () => {
     const navigate = useNavigate()
-    const [burger, setBurger] = useState(false)
-
-
+    const [burger, setBurger] = useState<boolean>(false)
 
     const onNavigate = useCallback((path: string) => {
         navigate(path)

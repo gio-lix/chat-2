@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useLocation, useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {useLocation,  useParams, useSearchParams} from "react-router-dom";
 
 import {RootState} from "../../redux/store";
 import {BlogType, CategoryType} from "../../utils/TypeScipt";
@@ -11,14 +11,15 @@ import Spinner from "../../components/alert/Spinner";
 
 const BlogsByCategory = () => {
     const {search} = useLocation()
-    const dispatch = useDispatch<any>()
-    let [searchParams, setSearchParams] = useSearchParams();
     const {slug} = useParams()
+    const dispatch = useDispatch<any>()
+
+    let [searchParams, setSearchParams] = useSearchParams();
     const {categories, blogsCategory, alert} = useSelector((state: RootState) => state)
 
     const [categoryId, setCategoryId] = useState<string>("")
     const [blogs, setBlogs] = useState<BlogType[]>()
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState<number>(0)
 
 
     useEffect(() => {

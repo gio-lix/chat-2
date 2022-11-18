@@ -1,23 +1,32 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
+import {Link, useSearchParams} from "react-router-dom";
 import s from "./Blog.module.scss"
 
-import {BlogType, CommentType, Usertype} from "../../utils/TypeScipt";
-import Input from "../comments/Input";
-import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {Link} from "react-router-dom";
+import {BlogType, CommentType, Usertype} from "../../utils/TypeScipt";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    createCommentAction,
+    getCommentsAction
+} from "../../redux/actions/commentsAction";
+
+import Pagination from "../global/pagination/intex";
 import Comments from "../comments";
-import {createCommentAction, getCommentsAction} from "../../redux/actions/commentsAction";
+import Input from "../comments/Input";
 
 interface Props {
     blog: BlogType
 }
 
 const DisplayBlog: FC<Props> = ({blog}) => {
-    const {auth, comments} = useSelector((state: RootState) => state)
     const dispatch = useDispatch<any>()
+    const {auth, comments} = useSelector((state: RootState) => state)
+    let [searchParams, setSearchParams] = useSearchParams();
 
     const [showComments, setShowComments] = useState<CommentType[]>([])
+
+    let page = searchParams.get("page")
+
 
     const handleComment = (body: string) => {
         if (!auth.user || !auth.access_token) return
@@ -27,6 +36,7 @@ const DisplayBlog: FC<Props> = ({blog}) => {
             user: (auth.user as Usertype),
             blog_id: (blog._id as string),
             blog_user_id: (blog.user as Usertype)._id,
+            replyCM: [],
             createdAt: new Date().toISOString()
         }
         setShowComments([data, ...showComments])
@@ -35,19 +45,33 @@ const DisplayBlog: FC<Props> = ({blog}) => {
 
 
     useEffect(() => {
-        if (comments.data.length === 0) return
         setShowComments(comments.data)
     }, [comments.data])
 
-    const fetchComments = useCallback(async (id: string) => {
-        await dispatch(getCommentsAction(id))
+    const fetchComments = useCallback(async (id: string, num = 1) => {
+        await dispatch(getCommentsAction(id, num))
+
     }, [dispatch])
 
     useEffect(() => {
         if (!blog._id) return
-        fetchComments(blog._id)
-    }, [blog._id, fetchComments])
 
+        fetchComments(blog._id)
+        if (comments.total > 1) {
+            if (!page) {
+                setSearchParams(`?page=1`)
+            } else {
+                setSearchParams(`?page=${page}`)
+                fetchComments(blog._id, Number(page))
+            }
+        }
+    }, [blog._id, fetchComments, comments.total])
+
+
+    const handlePagination = (num: number) => {
+        if (!blog._id) return;
+        fetchComments(blog._id, num)
+    }
 
 
     return (
@@ -85,6 +109,12 @@ const DisplayBlog: FC<Props> = ({blog}) => {
                     />
                 ))
             }
+            {comments.total > 1 && (
+                <Pagination
+                    total={comments.total}
+                    callback={handlePagination}
+                />
+            )}
         </article>
     );
 };

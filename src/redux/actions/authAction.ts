@@ -1,9 +1,8 @@
 import {Dispatch} from "react";
-
 import {LoginType, RegisterType} from "../../utils/TypeScipt";
-import {getApi, getRefreshApi, postApi} from "../../utils/FetchData";
-import {AUTH, AuthAction} from "../types/authType";
+import {getApi, postApi} from "../../utils/FetchData";
 import {ValidRegister} from "../../utils/valid";
+import {AUTH, AuthAction} from "../types/authType";
 import {ALERT, AlertAction} from "../types/alertType";
 
 export const loginAction = (payload: LoginType) => async (dispatch: Dispatch<AuthAction | AlertAction>) => {
@@ -40,7 +39,7 @@ export const RefreshToken = () => async (dispatch: any) => {
 
     try {
         dispatch({type: ALERT, payload: {loading: true}})
-        const res = await getRefreshApi('refresh_token',)
+        const res = await getApi('refresh_token',)
         dispatch({type: AUTH, payload: res})
         dispatch({type: ALERT, payload: {loading: false}})
     } catch (err: any) {

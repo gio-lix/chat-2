@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect, useRef} from 'react';
+import React, {FC, memo, useCallback, useEffect, useRef} from 'react';
 import ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
@@ -8,10 +8,11 @@ import {useDispatch} from "react-redux";
 import {ALERT} from "../../redux/types/alertType";
 
 interface Props {
+    body?: string
     setBody: (value: string) => void
 }
 
-const Quill: FC<Props> = ({setBody}) => {
+const Quill: FC<Props> = ({setBody, body}) => {
     const dispatch = useDispatch()
     const useQueryRef = useRef<ReactQuill>(null)
     const modules = {toolbar: {container}}
@@ -61,6 +62,7 @@ const Quill: FC<Props> = ({setBody}) => {
                 modules={modules}
                 placeholder="write somethings..."
                 onChange={e => setBody(e)}
+                value={body}
                 ref={useQueryRef}
             />
         </section>
@@ -85,4 +87,4 @@ let container = [
     ['clean', 'link', 'image', 'video']
 ]
 
-export default Quill;
+export default memo(Quill);

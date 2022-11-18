@@ -1,7 +1,8 @@
 import React, {FC, memo} from 'react';
-import s from "./Header.module.scss";
 import clsx from "clsx";
 import {Link, useLocation} from "react-router-dom";
+import s from "./Header.module.scss";
+
 import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 

@@ -1,10 +1,10 @@
 import * as type from "../types/blogTypes"
-import {BlogCategoryAction, IBlogsCategory} from "../types/blogTypes";
+import {BlogAction, BlogsCategoryState} from "../types/blogTypes";
 
 
 const blogsCategoryReducers = (
-    state: IBlogsCategory[] = [],
-    action: BlogCategoryAction): IBlogsCategory[] => {
+    state: BlogsCategoryState[] = [],
+    action: BlogAction): BlogsCategoryState[] => {
 
     switch (action.type) {
         case type.GET_BLOGS_CATEGORY_ID:

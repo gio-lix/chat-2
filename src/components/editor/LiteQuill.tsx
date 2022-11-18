@@ -17,6 +17,7 @@ const LiteQuill:FC<Props> = ({setBody, body}) => {
                 modules={modules}
                 placeholder="write somethings..."
                 onChange={e => setBody(e)}
+                value={body}
             />
         </section>
     );

@@ -4,10 +4,13 @@ import clsx from "clsx";
 import {HiOutlineEye, HiOutlineEyeOff} from "react-icons/hi";
 import {useDispatch} from "react-redux";
 import {registerAction} from "../../redux/actions/authAction";
-import {useLocation} from "react-router-dom";
+
+interface PressState {
+    password: boolean
+    cf_password: boolean
+}
 
 const RegisterPass = () => {
-
     const dispatch = useDispatch()
     const [userRegister, setUserRegister] = useState({
         name: "",
@@ -15,7 +18,10 @@ const RegisterPass = () => {
         password: "",
         cf_password: ""
     })
-    const [typePress, setTypePress] = useState(false)
+    const [typePress, setTypePress] = useState<PressState>({
+        password: false,
+        cf_password: false
+    })
     const [focus, setFocus] = useState("")
 
     const {password, account,cf_password,name} = userRegister
@@ -62,15 +68,15 @@ const RegisterPass = () => {
                 <label htmlFor="password">Password</label>
                 <div className={s.password_box}>
                     <input
-                        type={typePress ? "text" : "password"}
+                        type={typePress.password ? "text" : "password"}
                         name="password"
                         id="password"
                         value={password}
                         onChange={onHandleChange}
                         onFocus={() => setFocus("password")}
                     />
-                    <small onClick={() => setTypePress(!typePress)}>
-                        {typePress ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
+                    <small onClick={() => setTypePress((prev: PressState) => ({...prev, password: !prev.password}))}>
+                        {typePress.password ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
                     </small>
                 </div>
             </div>
@@ -78,15 +84,15 @@ const RegisterPass = () => {
                 <label htmlFor="cf_password">Confirm Password</label>
                 <div className={s.password_box}>
                     <input
-                        type={typePress ? "text" : "password"}
+                        type={typePress.cf_password ? "text" : "password"}
                         name="cf_password"
                         id="cf_password"
                         value={cf_password}
                         onChange={onHandleChange}
                         onFocus={() => setFocus("cf_password")}
                     />
-                    <small onClick={() => setTypePress(!typePress)}>
-                        {typePress ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
+                    <small onClick={() => setTypePress((prev: PressState) => ({...prev,cf_password: !prev.cf_password}))}>
+                        {typePress.cf_password ? <HiOutlineEye/> : <HiOutlineEyeOff/>}
                     </small>
                 </div>
             </div>

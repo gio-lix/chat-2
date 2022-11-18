@@ -9,6 +9,7 @@ import Spinner from "./Spinner";
 const Alert = () => {
     const {alert} = useSelector((state: RootState) => state)
 
+
     return (
         <section>
             {alert.loading && <Loading />}

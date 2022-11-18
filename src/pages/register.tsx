@@ -1,6 +1,7 @@
 import React from 'react';
-import FormContainer from "../components/auth/formBox";
 import {Link, useLocation} from "react-router-dom";
+
+import FormContainer from "../components/auth/formBox";
 import RegisterPass from "../components/auth/RegisterPass";
 
 const Register = () => {

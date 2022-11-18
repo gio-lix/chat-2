@@ -7,6 +7,7 @@ import blogsCategory from "./blogsCategoryReducers"
 import otherUser from "./othersProfileReducer"
 import blogsByUsers from "./blogsUsersReducer"
 import comments from "./commentsReducer"
+import socket from "./socketReducer"
 
 export default combineReducers({
     auth,
@@ -16,5 +17,6 @@ export default combineReducers({
     blogsCategory,
     otherUser,
     blogsByUsers,
-    comments
+    comments,
+    socket
 })
