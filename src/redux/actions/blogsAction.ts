@@ -11,10 +11,13 @@ import {
 } from "../types/blogTypes";
 import {imageUpload} from "../../utils/ImageUpload";
 import {deleteApi, getApi, postApi, putApi} from "../../utils/FetchData";
+import {checkTokenExp} from "../../utils/checkTokenExp";
 
 
 export const createBlogAction = (blog: BlogType, token: string) =>
     async (dispatch: Dispatch<AlertAction | BlogAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         let url = ""
         try {
             dispatch({type: ALERT, payload: {loading: true}})
@@ -27,7 +30,7 @@ export const createBlogAction = (blog: BlogType, token: string) =>
             }
             const newBlog = {...blog, thumbnail: url}
 
-            const res = await postApi("blog", newBlog, token)
+            const res = await postApi("blog", newBlog, access_token)
 
 
             dispatch({
@@ -89,6 +92,8 @@ export const getBlogsByUserId = (id: string, search: string = `?page=${1}`) =>
 
 export const updateBlogAction = (blog: BlogType, token: string) =>
     async (dispatch: Dispatch<AlertAction | BlogAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         let url = ""
         try {
             dispatch({type: ALERT, payload: {loading: true}})
@@ -102,7 +107,7 @@ export const updateBlogAction = (blog: BlogType, token: string) =>
             const newBlog = {...blog, thumbnail: url}
 
 
-            const res = await putApi(`blog/${newBlog._id}`, newBlog, token)
+            const res = await putApi(`blog/${newBlog._id}`, newBlog, access_token)
 
             dispatch({type: ALERT, payload: {success: res.msg}})
         } catch (err: any) {
@@ -112,11 +117,23 @@ export const updateBlogAction = (blog: BlogType, token: string) =>
 
 export const deleteBlogAction = (blog: BlogType, token: string) =>
     async (dispatch: Dispatch<AlertAction | BlogAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         try {
             dispatch({type: DELETE_BLOG_BY_USER_ID, payload: blog})
-            await deleteApi(`blog/${blog._id}`, token)
+            await deleteApi(`blog/${blog._id}`, access_token)
 
         } catch (err: any) {
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
         }
+    }
+
+
+    export const searchBlogsAction = () =>
+        async (dispatch: Dispatch<AlertAction | BlogAction>) => {
+            try {
+
+            } catch (err: any) {
+                dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
+            }
     }

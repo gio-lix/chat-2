@@ -1,4 +1,3 @@
-import axiosClient from "../axios";
 import axios from "axios";
 
 export const postApi = async (url: string, post: object, token?: string) => {

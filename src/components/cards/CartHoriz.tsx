@@ -27,8 +27,7 @@ const CartHoriz: FC<Props> = ({blog}) => {
     }
 
     return (
-        <div>
-            <h2 style={{margin: "10px"}}>Preview</h2>
+        <div style={{ marginBottom:"10px"}}>
             <article className={s.cartHorizon}>
                 <div className={s.cartHorizon_imageBox}>
                     {blog.thumbnail && (

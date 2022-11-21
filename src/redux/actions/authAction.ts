@@ -4,6 +4,7 @@ import {getApi, postApi} from "../../utils/FetchData";
 import {ValidRegister} from "../../utils/valid";
 import {AUTH, AuthAction} from "../types/authType";
 import {ALERT, AlertAction} from "../types/alertType";
+import {checkTokenExp} from "../../utils/checkTokenExp";
 
 export const loginAction = (payload: LoginType) => async (dispatch: Dispatch<AuthAction | AlertAction>) => {
     try {
@@ -32,7 +33,6 @@ export const registerAction = (payload: RegisterType) =>
     }
 
 
-
 export const RefreshToken = () => async (dispatch: any) => {
     const logged = localStorage.getItem("logged")
     if (logged !== "true") return
@@ -47,10 +47,13 @@ export const RefreshToken = () => async (dispatch: any) => {
     }
 }
 
-export const logoutAction = () => async (dispatch: any) =>  {
+export const logoutAction = (token: string) => async (dispatch: any) => {
+    const result = await checkTokenExp(token, dispatch)
+    const access_token = result ? result : token
     try {
+
         localStorage.removeItem("logged")
-        await getApi("logout")
+        await getApi("logout", access_token)
         window.location.href = "/"
     } catch (err: any) {
         dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
@@ -68,3 +71,14 @@ export const googleLoginAction = (payload: LoginType) => async (dispatch: Dispat
         dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
     }
 }
+export const forgetPasswordAction = (account: string) =>
+    async (dispatch: Dispatch<AlertAction>) => {
+        try {
+            dispatch({type: ALERT, payload: {loading: true}})
+            console.log({account})
+
+            dispatch({type: ALERT, payload: {loading: false}})
+        } catch (err: any) {
+            dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
+        }
+    }

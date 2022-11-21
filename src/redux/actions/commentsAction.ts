@@ -15,14 +15,17 @@ import {
     postApi,
     putApi
 } from "../../utils/FetchData";
+import {checkTokenExp} from "../../utils/checkTokenExp";
 
 
 export const createCommentAction = (data: CommentType, token: string) =>
     async (dispatch: Dispatch<AlertAction | CommentAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         try {
             dispatch({type: ALERT, payload: {spinner: true}})
 
-            await postApi("comment", data, token)
+            await postApi("comment", data, access_token)
 
             dispatch({type: ALERT, payload: {spinner: false}})
         } catch (err: any) {
@@ -48,8 +51,10 @@ export const getCommentsAction = (id: string, num: number) =>
 
 export const replyCommentsAction = (data: CommentType, token: string) =>
     async (dispatch: Dispatch<AlertAction | CommentAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         try {
-            await postApi("reply_comment", data, token)
+            await postApi("reply_comment", data, access_token)
         } catch (err: any) {
             dispatch({type: ALERT, payload: err.message.data.msg})
         }
@@ -57,13 +62,15 @@ export const replyCommentsAction = (data: CommentType, token: string) =>
 
 export const updateCommentAction = (data: CommentType, token: string) =>
     async (dispatch: Dispatch<AlertAction | CommentAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         try {
             dispatch({
                 type: data.comment_root ? UPDATE_REPLY : UPDATE_COMMENT,
                 payload: data
             })
 
-            await putApi(`comment/${data._id}`, {data}, token)
+            await putApi(`comment/${data._id}`, {data}, access_token)
 
         } catch (err: any) {
             dispatch({type: ALERT, payload: err.message.data.msg})
@@ -72,12 +79,14 @@ export const updateCommentAction = (data: CommentType, token: string) =>
 
 export const deleteCommentAction = (data: CommentType, token: string) =>
     async (dispatch: Dispatch<AlertAction | CommentAction>) => {
+        const result = await checkTokenExp(token, dispatch)
+        const access_token = result ? result : token
         try {
             dispatch({
                 type: data.comment_root ? DELETE_REPLY : DELETE_COMMENT,
                 payload: data
             })
-            await deleteApi(`comment/${data._id}`, token)
+            await deleteApi(`comment/${data._id}`, access_token)
         } catch (err: any) {
             dispatch({type: ALERT, payload: err.message?.data.msg})
         }

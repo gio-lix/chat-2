@@ -61,6 +61,8 @@
   display: grid;
   grid-template-columns: 3fr 6fr;
 
+  background-color: white;
+
   @include breakpoint-down(mobile) {
     grid-template-columns: 1fr;
   }
@@ -140,6 +142,7 @@
           font-size: $font-md-18;
           color: $blue-mix-750;
         }
+
         > a:first-child {
           span {
             position: relative;
@@ -163,10 +166,11 @@
           }
         }
 
-        >span:last-child {
+        > span:last-child {
           cursor: pointer;
           position: relative;
           margin-left: 14px;
+
           &:hover {
             &::after {
               content: "delete";
@@ -183,6 +187,7 @@
               background-color: $blue-mix-200;
             }
           }
+
           svg {
             color: $red-mix-200 !important;
 

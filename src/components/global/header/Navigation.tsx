@@ -30,6 +30,11 @@ const Navigation:FC<Props> = ({className, onNavigate}) => {
         return () => window.removeEventListener("click", handleClick)
     }, [navRef.current])
 
+    const handleLogout = () => {
+        if (!auth.access_token) return
+        dispatch(logoutAction(auth.access_token))
+    }
+
 
     return (
             <nav className={clsx(s.nav, className)}>
@@ -44,9 +49,7 @@ const Navigation:FC<Props> = ({className, onNavigate}) => {
                             {drop && (
                                 <div className={clsx(s.drop_down)}>
                                     <button  onClick={() => onNavigate(`/profile/${auth.user?._id}`)}>Profile </button>
-                                    <button
-                                        onClick={() => dispatch(logoutAction())}
-                                    >
+                                    <button onClick={handleLogout}>
                                         logout
                                     </button>
                                 </div>

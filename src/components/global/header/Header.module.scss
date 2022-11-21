@@ -2,9 +2,13 @@
 @import "src/styles/breakpoints";
 
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
-  top: 0;
+  //top: 0;
   height: 60px;
   padding: 0 10px;
   background-color: $bg-gray-200;
@@ -93,7 +97,6 @@
   transform: rotate(-90deg);
 }
 
-
 .drop_down {
   position: absolute;
   z-index: 2;
@@ -123,8 +126,6 @@
   }
 }
 
-
-// burger Menu
 .burger_menu_active {
   position: fixed;
   top: 50px;
@@ -147,6 +148,7 @@
 }
 
 .search {
+  position: relative;
   width: 100%;
   height: auto;
 
@@ -154,7 +156,6 @@
     margin: 0 10px;
     .active_border {
       border: 1.5px solid transparent!important;
-
     }
   }
 
@@ -171,7 +172,20 @@
     padding: 5px 5px;
     border: 1px solid $gray-mix-100;
   }
-
+  &_blogs {
+    position: absolute;
+    z-index: 20;
+    top: 40px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding: 8px;
+    background-color: $bg-gray-200;
+    overflow-y: scroll;
+    h3 {
+      text-align: center;
+      color: $gray-300;
+    }
+  }
 }
 
 
@@ -209,4 +223,6 @@
     }
   }
 }
+
+
 

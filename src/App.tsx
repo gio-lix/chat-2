@@ -35,9 +35,11 @@ function App() {
             <Header />
             <Alert />
             <SocketClient/>
-            <Routes>
-                {renderPaths(["/", "/:page", "/:page/:slug"], <PageRender />)}
-            </Routes>
+            <main className="min-height">
+                <Routes>
+                    {renderPaths(["/", "/:page", "/:page/:slug"], <PageRender />)}
+                </Routes>
+            </main>
             <Footer/>
         </div>
     );
