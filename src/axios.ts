@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const  API_URL = `${process.env.REACT_PUBLIC_URL}/api`
+export const  API_URL = `${process.env.REACT_PUBLIC_URL}`
 const axiosClient = axios.create({
     withCredentials: true,
     baseURL: API_URL
