@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1abbe9eb-6762-4ed2-9af0-09f4530df1ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/chat-2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/blog/DisplayBlog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/blog/DisplayBlog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CartHoriz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CartHoriz.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/comments/CommentList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comments/CommentList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/header/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/header/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/UserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/UserInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/category.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/category.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/create_blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/create_blog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/authAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/authAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/blogsAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/blogsAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/categoryAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/categoryAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/commentsAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/commentsAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/profileAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/profileAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/FetchData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FetchData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/checkTokenExp.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669185434766</updated>
-      <workItem from="1669185438403" duration="6983000" />
+      <workItem from="1669185438403" duration="8457000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const  API_URL = "http://localhost:5000/api"
+export const  API_URL = "https://aaaapppp12.onrender.com/api"
 const axiosClient = axios.create({
     withCredentials: true,
     baseURL: API_URL
