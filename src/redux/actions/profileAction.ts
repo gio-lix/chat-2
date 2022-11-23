@@ -7,15 +7,10 @@ import {AuthType} from "../../utils/TypeScipt";
 import {ALERT, AlertAction} from "../types/alertType";
 import {AUTH, AuthAction} from "../types/authType";
 import {GET_OTHER_INFO, OthersProfileTypeAction} from "../types/profileType";
-import {checkTokenExp} from "../../utils/checkTokenExp";
 
 export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
     async (dispatch: Dispatch<AlertAction | AuthAction>) => {
         if (!auth.access_token || !auth.user) return
-
-        const result = await checkTokenExp(auth.access_token!, dispatch)
-        const access_token = result ? result : auth.access_token
-
         let url = " "
 
         try {
@@ -32,7 +27,7 @@ export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
             const res = await putApi("user", {
                 avatar: url ? url : auth.user.avatar,
                 name: name ? name : auth.user.name
-            }, access_token)
+            })
 
             dispatch({
                     type: AUTH, payload: {
@@ -52,15 +47,14 @@ export const updateUserAction = (avatar: File, name: string, auth: AuthType) =>
 
     }
 
-export const resetPasswordAction = (password: string, cf_password: string, token: string) =>
+export const resetPasswordAction = (password: string, cf_password: string) =>
     async (dispatch: Dispatch<AlertAction>) => {
-        const result = await checkTokenExp(token, dispatch)
-        const access_token = result ? result : token
+
         const msg = checkPassword(password, cf_password)
         if (msg) return dispatch({type: ALERT, payload: {errors: msg}})
         try {
             dispatch({type: ALERT, payload: {loading: true}})
-            await putApi("reset_password", {password}, access_token)
+            await putApi("reset_password", {password})
             dispatch({type: ALERT, payload: {loading: false}})
         } catch (err: any) {
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})

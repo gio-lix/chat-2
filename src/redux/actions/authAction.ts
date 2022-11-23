@@ -4,12 +4,14 @@ import {getApi, postApi} from "../../utils/FetchData";
 import {ValidRegister} from "../../utils/valid";
 import {AUTH, AuthAction} from "../types/authType";
 import {ALERT, AlertAction} from "../types/alertType";
-import {checkTokenExp} from "../../utils/checkTokenExp";
+import axios from "axios";
 
 export const loginAction = (payload: LoginType) => async (dispatch: Dispatch<AuthAction | AlertAction>) => {
     try {
         dispatch({type: ALERT, payload: {loading: true}})
         const res = await postApi('login', {...payload})
+
+        localStorage.setItem("accessToken", res.access_token)
 
         dispatch({type: AUTH, payload: res})
         dispatch({type: ALERT, payload: {success: 'Login Success!'}})
@@ -39,22 +41,24 @@ export const RefreshToken = () => async (dispatch: any) => {
 
     try {
         dispatch({type: ALERT, payload: {loading: true}})
-        const res = await getApi('refresh_token',)
-        dispatch({type: AUTH, payload: res})
+        const {data} = await axios.get('http://localhost:5000/api/refresh_token',{
+            withCredentials: true
+        })
+        localStorage.setItem("accessToken", data.access_token)
+        dispatch({type: AUTH, payload: data})
         dispatch({type: ALERT, payload: {loading: false}})
     } catch (err: any) {
         dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
     }
 }
 
-export const logoutAction = (token: string) => async (dispatch: any) => {
-    const result = await checkTokenExp(token, dispatch)
-    const access_token = result ? result : token
+export const logoutAction = () => async (dispatch: any) => {
     try {
-
+        const logout = await getApi("logout")
+        localStorage.removeItem("accessToken")
         localStorage.removeItem("logged")
-        await getApi("logout", access_token)
         window.location.href = "/"
+
     } catch (err: any) {
         dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
     }

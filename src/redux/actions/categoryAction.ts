@@ -9,15 +9,13 @@ import {
     GET_CATEGORY,
     UPDATE_CATEGORY
 } from "../types/categoryTypes";
-import {checkTokenExp} from "../../utils/checkTokenExp";
 
-export const createCategoryAction = (name: string, token: string) =>
+export const createCategoryAction = (name: string) =>
     async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
-        const result = await checkTokenExp(token, dispatch)
-        const access_token = result ? result : token
+
         try {
             dispatch({type: ALERT, payload: {loading: true}})
-            const {newCategory} = await postApi("category", {name}, access_token)
+            const {newCategory} = await postApi("category", {name})
             dispatch({type: CREATE_CATEGORY, payload: newCategory})
             dispatch({type: ALERT, payload: {loading: false}})
         } catch (err: any) {
@@ -37,28 +35,21 @@ export const getCategoryAction = () =>
         }
     }
 
-export const updateCategoryAction = (data: CategoryType, token: string) =>
+export const updateCategoryAction = (data: CategoryType) =>
     async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
-        const result = await checkTokenExp(token, dispatch)
-        const access_token = result ? result : token
         try {
             dispatch({type: UPDATE_CATEGORY, payload: data})
-            await putApi(`category/${data._id}`,
-                {name: data.name},
-                access_token
-            )
+            await putApi(`category/${data._id}`, {name: data.name})
         } catch (err: any) {
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
         }
     }
 
-export const deleteCategoryAction = (id: string, token: string) =>
+export const deleteCategoryAction = (id: string) =>
     async (dispatch: Dispatch<AlertAction | CategoryAction>) => {
-        const result = await checkTokenExp(token, dispatch)
-        const access_token = result ? result : token
         try {
             dispatch({type: DELETE_CATEGORY, payload: id})
-            await deleteApi(`category/${id}`, access_token)
+            await deleteApi(`category/${id}`)
         } catch (err: any) {
             dispatch({type: ALERT, payload: {errors: err.response.data.msg}})
         }

@@ -88,9 +88,9 @@ const CreateBlog:FC<Props> = ({id}) => {
             }
 
 
-            dispatch(updateBlogAction(newDate, auth.access_token))
+            dispatch(updateBlogAction(newDate))
         } else {
-            dispatch(createBlogAction(newDate, auth.access_token))
+            dispatch(createBlogAction(newDate))
         }
     }
 

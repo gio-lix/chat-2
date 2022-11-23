@@ -19,7 +19,10 @@ function App() {
 
 
     useEffect(() => {
-        dispatch(RefreshToken())
+        if (localStorage.getItem("accessToken")) {
+            dispatch(RefreshToken())
+        }
+
         dispatch(getCategoryAction())
         dispatch(getBlogsAction())
     },[dispatch])

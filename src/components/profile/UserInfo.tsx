@@ -57,7 +57,7 @@ const UserInfo = () => {
         e.preventDefault()
         if (avatar || name) dispatch(updateUserAction(avatar as File, name, auth))
         if (password && auth.access_token)
-            dispatch(resetPasswordAction(password, cf_password, auth.access_token))
+            dispatch(resetPasswordAction(password, cf_password))
     }
 
 

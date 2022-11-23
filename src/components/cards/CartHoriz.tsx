@@ -21,8 +21,8 @@ const CartHoriz: FC<Props> = ({blog}) => {
 
 
     const handleDelete = () => {
-        if (!auth.user || !auth.access_token) return
-        dispatch(deleteBlogAction(blog, auth.access_token))
+        if (!auth.user ) return
+        dispatch(deleteBlogAction(blog))
         console.log(blog)
     }
 

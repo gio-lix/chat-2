@@ -27,9 +27,9 @@ const Category = () => {
         if (edit) {
             if (edit?.name === name) return;
             const data = {...edit, name}
-            dispatch(updateCategoryAction(data, auth.access_token))
+            dispatch(updateCategoryAction(data))
         } else {
-            dispatch(createCategoryAction(name, auth.access_token))
+            dispatch(createCategoryAction(name))
         }
         setName("")
         setEdit(null)
@@ -37,7 +37,7 @@ const Category = () => {
 
     const handleClose = (id: string) => {
         if (!auth.access_token) return
-        dispatch(deleteCategoryAction(id, auth.access_token))
+        dispatch(deleteCategoryAction(id))
     }
 
     useEffect(() => {

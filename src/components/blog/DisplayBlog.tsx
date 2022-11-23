@@ -40,7 +40,7 @@ const DisplayBlog: FC<Props> = ({blog}) => {
             createdAt: new Date().toISOString()
         }
         setShowComments([data, ...showComments])
-        dispatch(createCommentAction(data, auth.access_token))
+        dispatch(createCommentAction(data))
     }
 
 

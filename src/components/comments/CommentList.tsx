@@ -42,7 +42,7 @@ const CommentList: FC<Props> = ({comment, setShowReply, showReply, children}) =>
         }
 
         setShowReply([data, ...showReply])
-        dispatch(replyCommentsAction(data, auth.access_token))
+        dispatch(replyCommentsAction(data))
         setReply(false)
 
     }
@@ -52,14 +52,14 @@ const CommentList: FC<Props> = ({comment, setShowReply, showReply, children}) =>
 
         if (body === edit.content) return setEdit(undefined)
         const newComment = {...edit, content: body}
-        dispatch(updateCommentAction(newComment, auth.access_token))
+        dispatch(updateCommentAction(newComment))
         setEdit(undefined)
     }
 
 
     const handleDelete = (comment: CommentType) => {
         if (!auth.access_token || !auth.user) return
-        dispatch(deleteCommentAction(comment, auth.access_token))
+        dispatch(deleteCommentAction(comment))
     }
 
     const Nav = (comment: CommentType) => {

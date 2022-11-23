@@ -1,27 +1,19 @@
-import axios from "axios";
+import axiosClient from "../axios";
 
-export const postApi = async (url: string, post: object, token?: string) => {
-    const {data} = await axios.post(`/api/${url}`, post,{
-        headers: {Authorization: token}
-    })
+export const postApi = async (url: string, post: object) => {
+    const {data} = await axiosClient.post(`/${url}`, post)
     return data
 }
-export const getApi = async (url: string, token?: string) => {
-    const {data} = await axios.get(`/api/${url}`,{
-        headers: {Authorization: token},
-    })
+export const getApi = async (url: string) => {
+    const {data} = await axiosClient.get(`/${url}`)
     return data
 }
 
-export const putApi = async (url: string,post: object, token?: string) => {
-    const {data} = await axios.put(`/api/${url}`, post, {
-        headers: {Authorization: token},
-    })
+export const putApi = async (url: string,post: object) => {
+    const {data} = await axiosClient.put(`/${url}`, post)
     return data
 }
-export const deleteApi = async (url: string, token?: string) => {
-    const {data} = await axios.delete(`/api/${url}`, {
-        headers: {Authorization: token},
-    })
+export const deleteApi = async (url: string) => {
+    const {data} = await axiosClient.delete(`/${url}`)
     return data
 }

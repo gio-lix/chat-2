@@ -32,7 +32,7 @@ const Navigation:FC<Props> = ({className, onNavigate}) => {
 
     const handleLogout = () => {
         if (!auth.access_token) return
-        dispatch(logoutAction(auth.access_token))
+        dispatch(logoutAction())
     }
 
 
