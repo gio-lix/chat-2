@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./auth.module.scss"
 import clsx from "clsx";
 import {HiOutlineEye, HiOutlineEyeOff} from "react-icons/hi";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {registerAction} from "../../redux/actions/authAction";
+import {RootState} from "../../redux/store";
+import {useNavigate} from "react-router-dom";
 
 interface PressState {
     password: boolean
@@ -11,7 +13,9 @@ interface PressState {
 }
 
 const RegisterPass = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
+    const {alert} = useSelector((state: RootState) => state)
     const [userRegister, setUserRegister] = useState({
         name: "",
         account: "",
@@ -37,7 +41,11 @@ const RegisterPass = () => {
         dispatch(registerAction(userRegister) as any)
 
     }
-
+    useEffect(() => {
+        if (alert.success) {
+            navigate("/login")
+        }
+    },[alert])
     return (
         <form onSubmit={handleSubmit} className={s.root}>
             <div className={clsx(focus === "name" && s.active_color)}>
