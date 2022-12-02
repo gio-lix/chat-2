@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1abbe9eb-6762-4ed2-9af0-09f4530df1ed" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/RegisterPass.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/RegisterPass.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +75,9 @@
       <workItem from="1669639892898" duration="1352000" />
       <workItem from="1669712078534" duration="1002000" />
       <workItem from="1669719592556" duration="1105000" />
+      <workItem from="1669745112226" duration="89000" />
+      <workItem from="1669745304740" duration="390000" />
+      <workItem from="1669974474641" duration="522000" />
     </task>
     <servers />
   </component>
